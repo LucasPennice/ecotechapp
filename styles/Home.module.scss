@@ -1,0 +1,428 @@
+@keyframes animateEntrance {
+	0% {
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+}
+
+.NavBarContainer {
+	height: 124px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0rem 4rem;
+	position: sticky;
+	top: 0;
+	background-color: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(15px);
+	z-index: 10;
+
+	img {
+		width: 17vw;
+		min-width: 200px;
+		max-width: 400px;
+	}
+}
+.NavBarLinksContainer {
+	width: 70%;
+	max-width: 500px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-weight: 600;
+	font-size: 27px;
+	letter-spacing: -0.01em;
+
+	div {
+		position: relative;
+		color: #252627;
+		padding: 1rem 0rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:hover::before {
+			width: 100%;
+			background-color: #53dd6c;
+		}
+		&:hover i {
+			opacity: 1;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 1rem;
+			left: 0rem;
+			height: 3px;
+			width: 11px;
+			transition: 0.25s;
+			background-color: #252627;
+		}
+
+		i {
+			display: flex;
+			justify-content: center;
+			opacity: 0.2;
+			font-size: 1rem;
+			margin-left: 0.5rem;
+			transition: 0.2s;
+		}
+	}
+}
+
+.serviceMenuContainerClosed,
+.serviceMenuContainer {
+	position: absolute;
+	top: 4rem;
+	right: 0rem;
+	width: 293px;
+	background: #252627;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 8px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	a {
+		font-size: 1rem;
+		cursor: pointer;
+		color: rgba(255, 255, 255, 0.79);
+
+		&:hover {
+			color: rgba(83, 221, 108, 0.79);
+			padding-left: 0.5rem;
+		}
+	}
+}
+.serviceMenuContainer {
+	opacity: 1;
+	transition: opacity 0.3s, height 0.3s, transform 0s 0s;
+
+	a {
+		opacity: 1;
+		transition: opacity 0.25s 0.2s, padding 0.15s ease-in-out,
+			color 0.15s ease-in-out;
+	}
+}
+
+.serviceMenuContainerClosed {
+	opacity: 0;
+	transform: scale(0);
+	transition: opacity 0.3s, height 0.3s, transform 0s 0.3s;
+	a {
+		opacity: 0;
+	}
+}
+.BridgeImageContainer {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 6rem;
+	margin-top: 2rem;
+	animation: animateEntrance 0.4s both ease-in-out;
+
+	.BridgeImage {
+		width: 85%;
+		height: calc(100vh - 15rem);
+		background: url('/puente.jpeg');
+		background-size: cover;
+		mix-blend-mode: normal;
+		filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25));
+		border-radius: 16px;
+
+		aside {
+			position: absolute;
+			left: 10%;
+			top: 20%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+			width: 20vw;
+			h1,
+			h2 {
+				margin: 0rem;
+				width: 100%;
+			}
+			h1 {
+				font-weight: 400;
+				font-size: clamp(10px, 1.2vw, 35px);
+				letter-spacing: 0.09em;
+				color: #000000;
+				white-space: nowrap;
+				animation: animateEntrance 0.2s 0.2s both ease-in-out;
+			}
+			h2 {
+				width: 500px;
+				font-weight: 400;
+				font-size: clamp(10px, 1vw, 24px);
+				text-align: center;
+				letter-spacing: 0.06em;
+				color: rgba(0, 0, 0, 0.8);
+				animation: animateEntrance 0.2s 0.3s both ease-in-out;
+			}
+		}
+	}
+}
+
+.CardsComponentContainer {
+	background-color: #f7f7f7;
+	padding: 4rem 0rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	div {
+		width: 85%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+	$cardWidth: 50vw;
+	$maxCardWidth: 500px;
+	.CardContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: $cardWidth;
+		max-width: $maxCardWidth;
+		height: calc($cardWidth * 0.665);
+		max-height: calc($maxCardWidth * 0.665);
+		background: #252627;
+		box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.25);
+		border-radius: 16px;
+
+		&:hover main {
+			transform: translateY(1rem);
+			opacity: 0;
+		}
+		&:hover aside {
+			opacity: 1;
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			color: white;
+			opacity: 1;
+			transition: 0.25s;
+			font-weight: 600;
+			font-size: clamp(1.2rem, 1vw, 2rem);
+			width: 100%;
+			padding: 0rem 1rem;
+			text-align: center;
+			letter-spacing: 0.07em;
+			i {
+				font-size: 5rem;
+			}
+		}
+
+		aside {
+			position: absolute;
+			color: #53dd6c;
+			transition: 0.25s;
+			opacity: 0;
+			font-weight: 600;
+			font-size: clamp(1rem, 1vw, 2rem);
+			width: 100%;
+			padding: 0rem 1rem;
+			text-align: center;
+			letter-spacing: 0.07em;
+			width: $cardWidth;
+			max-width: $maxCardWidth;
+		}
+	}
+}
+
+.SuExitoEsNuestroTrabajoSeccion {
+	padding: 8rem 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+	h1 {
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 400;
+		font-size: clamp(42px, 4vw, 62px);
+		line-height: 84px;
+		text-align: center;
+		letter-spacing: 0.07em;
+		color: #000000;
+	}
+	.ServicesProvidedContainer {
+		width: 85%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		gap: 4rem;
+		overflow-x: scroll;
+		.ServicesProvided {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 1.5rem;
+			color: #999999;
+			transition: 0.15s;
+
+			&:hover {
+				color: #53dd6c;
+			}
+			i {
+				height: 7rem;
+				font-size: 6rem;
+			}
+		}
+	}
+}
+
+.ContactSectionContainer {
+	background-color: #f7f7f7;
+	padding: 10rem 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	$formWidth: 40vw;
+	$formMaxWidth: 800px;
+
+	.ContactInformation,
+	.EmailForm {
+		width: $formWidth;
+		max-width: $formMaxWidth;
+		height: calc($formWidth * 0.8);
+		max-height: calc($formMaxWidth * 0.8);
+		box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.ContactInformation {
+		background-color: #252627;
+		justify-content: space-between;
+		border-radius: 1rem 0rem 0rem 1rem;
+		h1 {
+			font-weight: 600;
+			font-size: 42px;
+			line-height: 57px;
+			text-align: center;
+			letter-spacing: 0.03em;
+
+			color: #ffffff;
+		}
+		div {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 2.5rem;
+			a {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: 400;
+				font-size: 1.5rem;
+				line-height: 39px;
+				text-align: center;
+				letter-spacing: 0.03em;
+				color: #828282;
+				transition: 0.15s;
+				cursor: pointer;
+				&:hover {
+					color: #53dd6c;
+				}
+
+				i {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					font-size: 3rem;
+					margin-right: 1rem;
+				}
+			}
+		}
+		h3 {
+			font-weight: 400;
+			font-size: 20px;
+			line-height: 49px;
+			text-align: center;
+			letter-spacing: 0.03em;
+
+			color: rgba(130, 130, 130, 0.5);
+		}
+	}
+	.EmailForm {
+		background-color: white;
+		border-radius: 0rem 1rem 1rem 0rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+
+		input,
+		textarea {
+			width: 80%;
+			font-size: 1rem;
+		}
+
+		input {
+			height: 3.5rem;
+			position: relative;
+			outline: none;
+			border-style: none none solid none;
+			transition: 0.2s;
+			color: #252627a2;
+			font-size: 1.4rem;
+
+			&:focus {
+				color: #252627;
+				border-color: #53dd6c;
+			}
+		}
+
+		textarea {
+			height: 15rem;
+			outline: none;
+			resize: none;
+			border: 2px solid #252627;
+			border-radius: 1rem;
+			padding: 1rem;
+			font-size: 1.3rem;
+			transition: 0.2s;
+			color: #252627a2;
+			&:focus {
+				color: #252627;
+				border-color: #53dd6c;
+			}
+		}
+
+		button {
+			font-size: 1.4rem;
+			padding: 0.5rem 1.5rem;
+			border-radius: 0.5rem;
+			color: #252627;
+			background-color: white;
+			border: 1px solid #252627;
+			transition: 0.2s;
+			cursor: pointer;
+
+			&:hover {
+				transform: translateY(-5px);
+				border: 1px solid #252627;
+				background-color: #252627;
+				color: #53dd6c;
+			}
+		}
+	}
+}
