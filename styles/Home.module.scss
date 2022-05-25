@@ -1,3 +1,6 @@
+$breakpoint: 680px;
+$cardWidth: 50vw;
+$maxCardWidth: 500px;
 @keyframes animateEntrance {
 	0% {
 		opacity: 0;
@@ -27,6 +30,7 @@
 		max-width: 400px;
 	}
 }
+
 .NavBarLinksContainer {
 	width: 70%;
 	max-width: 500px;
@@ -34,11 +38,12 @@
 	justify-content: space-around;
 	align-items: center;
 	font-weight: 600;
-	font-size: 27px;
+	font-size: 1.3rem;
 	letter-spacing: -0.01em;
 
 	div {
 		position: relative;
+		cursor: pointer;
 		color: #252627;
 		padding: 1rem 0rem;
 		display: flex;
@@ -77,7 +82,7 @@
 .serviceMenuContainerClosed,
 .serviceMenuContainer {
 	position: absolute;
-	top: 4rem;
+	top: 3.5rem;
 	right: 0rem;
 	width: 293px;
 	background: #252627;
@@ -105,8 +110,7 @@
 
 	a {
 		opacity: 1;
-		transition: opacity 0.25s 0.2s, padding 0.15s ease-in-out,
-			color 0.15s ease-in-out;
+		transition: opacity 0.25s 0.2s, padding 0.15s ease-in-out, color 0.15s ease-in-out;
 	}
 }
 
@@ -116,6 +120,25 @@
 	transition: opacity 0.3s, height 0.3s, transform 0s 0.3s;
 	a {
 		opacity: 0;
+	}
+}
+@media (max-width: $breakpoint) {
+	.NavBarContainer {
+		flex-direction: column;
+		justify-content: space-evenly;
+		padding: 1rem 0rem;
+	}
+	.NavBarLinksContainer {
+		width: 100%;
+
+		div {
+			font-size: 1rem;
+		}
+	}
+	.serviceMenuContainerClosed,
+	.serviceMenuContainer {
+		right: auto;
+		left: 0;
 	}
 }
 .BridgeImageContainer {
@@ -133,27 +156,26 @@
 		background: url('/puente.jpeg');
 		background-size: cover;
 		mix-blend-mode: normal;
+		background-position: center;
 		filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25));
 		border-radius: 16px;
 
 		aside {
+			width: 50%;
+			height: 50%;
 			position: absolute;
-			left: 10%;
-			top: 20%;
 			display: flex;
 			flex-direction: column;
-			align-items: center;
 			justify-content: center;
+			align-items: center;
 			gap: 1rem;
-			width: 20vw;
 			h1,
 			h2 {
 				margin: 0rem;
-				width: 100%;
 			}
 			h1 {
 				font-weight: 400;
-				font-size: clamp(10px, 1.2vw, 35px);
+				font-size: clamp(15px, 1.5vw, 35px);
 				letter-spacing: 0.09em;
 				color: #000000;
 				white-space: nowrap;
@@ -162,7 +184,7 @@
 			h2 {
 				width: 500px;
 				font-weight: 400;
-				font-size: clamp(10px, 1vw, 24px);
+				font-size: clamp(10px, 1.1vw, 24px);
 				text-align: center;
 				letter-spacing: 0.06em;
 				color: rgba(0, 0, 0, 0.8);
@@ -171,7 +193,30 @@
 		}
 	}
 }
-
+@media (max-width: $breakpoint) {
+	.BridgeImageContainer {
+		margin-bottom: 3rem;
+		margin-top: 1rem;
+		.BridgeImage {
+			width: 95%;
+			height: auto;
+			aspect-ratio: 16/9;
+			aside {
+				backdrop-filter: blur(2px);
+				height: 100%;
+				width: 100%;
+				border-radius: 0.5rem;
+				h1,
+				h2 {
+					background-color: rgba(255, 255, 255, 0.5);
+					padding: 0.2rem 0.5rem;
+					border-radius: 0.1rem;
+					width: auto;
+				}
+			}
+		}
+	}
+}
 .CardsComponentContainer {
 	background-color: #f7f7f7;
 	padding: 4rem 0rem;
@@ -187,16 +232,14 @@
 		gap: 2rem;
 		flex-wrap: wrap;
 	}
-	$cardWidth: 50vw;
-	$maxCardWidth: 500px;
+
 	.CardContainer {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: $cardWidth;
 		max-width: $maxCardWidth;
-		height: calc($cardWidth * 0.665);
-		max-height: calc($maxCardWidth * 0.665);
+		aspect-ratio: 1/0.665;
 		background: #252627;
 		box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.25);
 		border-radius: 16px;
@@ -243,6 +286,21 @@
 		}
 	}
 }
+@media (max-width: $breakpoint) {
+	.CardsComponentContainer {
+		max-width: none;
+		width: 100%;
+		div {
+			width: 100%;
+		}
+		.CardContainer {
+			width: 90%;
+			aside {
+				width: 90%;
+			}
+		}
+	}
+}
 
 .SuExitoEsNuestroTrabajoSeccion {
 	padding: 8rem 2rem;
@@ -255,7 +313,8 @@
 		font-family: 'Open Sans';
 		font-style: normal;
 		font-weight: 400;
-		font-size: clamp(42px, 4vw, 62px);
+		font-size: clamp(42px, 3.5vw, 62px);
+		opacity: 0.9;
 		line-height: 84px;
 		text-align: center;
 		letter-spacing: 0.07em;
@@ -268,6 +327,22 @@
 		flex-wrap: nowrap;
 		gap: 4rem;
 		overflow-x: scroll;
+		padding-bottom: 1.5rem;
+		&::-webkit-scrollbar {
+			width: 12px;
+		}
+
+		&::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 5px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			border-radius: 5px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		}
 		.ServicesProvided {
 			display: flex;
 			flex-direction: column;
@@ -286,143 +361,97 @@
 		}
 	}
 }
-
+@media (max-width: $breakpoint) {
+	.SuExitoEsNuestroTrabajoSeccion {
+		padding: 2rem 1rem;
+		gap: 1rem;
+		h1 {
+			font-size: clamp(30px, 3.5vw, 62px);
+			line-height: 55px;
+		}
+		.ServicesProvidedContainer {
+			width: 100%;
+		}
+	}
+}
 .ContactSectionContainer {
+	width: 100%;
+	padding: 2rem 1rem;
 	background-color: #f7f7f7;
-	padding: 10rem 4rem;
+	color: #000000;
+	border-radius: 1rem 0rem 0rem 1rem;
 	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
-	justify-content: center;
+	flex-direction: column;
+	h1,
+	div,
+	h3 {
+		opacity: 0.7;
+		text-align: left;
+		width: 450px;
+	}
 
-	$formWidth: 40vw;
-	$formMaxWidth: 800px;
-
-	.ContactInformation,
-	.EmailForm {
-		width: $formWidth;
-		max-width: $formMaxWidth;
-		height: calc($formWidth * 0.8);
-		max-height: calc($formMaxWidth * 0.8);
-		box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+	h1 {
+		font-weight: 500;
+		font-size: 32px;
+		letter-spacing: 0.03em;
+	}
+	div {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		flex-direction: column;
-	}
-	.ContactInformation {
-		background-color: #252627;
-		justify-content: space-between;
-		border-radius: 1rem 0rem 0rem 1rem;
-		h1 {
-			font-weight: 600;
-			font-size: 42px;
-			line-height: 57px;
-			text-align: center;
-			letter-spacing: 0.03em;
-
-			color: #ffffff;
-		}
-		div {
+		gap: 2rem;
+		a {
 			display: flex;
 			justify-content: center;
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 2.5rem;
-			a {
+			align-items: center;
+			font-weight: 400;
+			font-size: 1.5rem;
+			line-height: 39px;
+			text-align: center;
+			letter-spacing: 0.03em;
+			color: #828282;
+			transition: 0.15s;
+			cursor: pointer;
+			&:hover {
+				color: #53dd6c;
+			}
+
+			i {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				font-weight: 400;
 				font-size: 1.5rem;
-				line-height: 39px;
-				text-align: center;
-				letter-spacing: 0.03em;
-				color: #828282;
-				transition: 0.15s;
-				cursor: pointer;
-				&:hover {
-					color: #53dd6c;
-				}
-
-				i {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					font-size: 3rem;
-					margin-right: 1rem;
-				}
+				margin-right: 1rem;
+			}
+		}
+	}
+	h3 {
+		margin: 0rem;
+		margin-top: 1rem;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 49px;
+		letter-spacing: 0.03em;
+		color: rgba(130, 130, 130, 0.5);
+	}
+}
+@media (max-width: $breakpoint) {
+	.ContactSectionContainer {
+		h1,
+		h3,
+		div {
+			width: 320px;
+		}
+		div {
+			a {
+				font-size: 1rem;
 			}
 		}
 		h3 {
-			font-weight: 400;
-			font-size: 20px;
-			line-height: 49px;
-			text-align: center;
-			letter-spacing: 0.03em;
-
-			color: rgba(130, 130, 130, 0.5);
-		}
-	}
-	.EmailForm {
-		background-color: white;
-		border-radius: 0rem 1rem 1rem 0rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-
-		input,
-		textarea {
-			width: 80%;
-			font-size: 1rem;
-		}
-
-		input {
-			height: 3.5rem;
-			position: relative;
-			outline: none;
-			border-style: none none solid none;
-			transition: 0.2s;
-			color: #252627a2;
-			font-size: 1.4rem;
-
-			&:focus {
-				color: #252627;
-				border-color: #53dd6c;
-			}
-		}
-
-		textarea {
-			height: 15rem;
-			outline: none;
-			resize: none;
-			border: 2px solid #252627;
-			border-radius: 1rem;
-			padding: 1rem;
-			font-size: 1.3rem;
-			transition: 0.2s;
-			color: #252627a2;
-			&:focus {
-				color: #252627;
-				border-color: #53dd6c;
-			}
-		}
-
-		button {
-			font-size: 1.4rem;
-			padding: 0.5rem 1.5rem;
-			border-radius: 0.5rem;
-			color: #252627;
-			background-color: white;
-			border: 1px solid #252627;
-			transition: 0.2s;
-			cursor: pointer;
-
-			&:hover {
-				transform: translateY(-5px);
-				border: 1px solid #252627;
-				background-color: #252627;
-				color: #53dd6c;
-			}
+			font-size: 0.8rem;
 		}
 	}
 }

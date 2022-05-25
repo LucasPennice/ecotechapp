@@ -1,4 +1,4 @@
-import { servicesProvidedIcons } from '../data';
+import { servicesProvidedIcons } from '../modificarTEXTO';
 import s from '../styles/Home.module.scss';
 import Cards from './Cards/Cards';
 import Contact from './Contact/Contact';
