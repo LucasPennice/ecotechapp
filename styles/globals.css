@@ -17,6 +17,10 @@ a {
 	cursor: default;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
 }
 
 ::selection {
